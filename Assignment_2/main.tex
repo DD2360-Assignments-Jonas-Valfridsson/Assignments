@@ -1,0 +1,85 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{scrextend}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[framemethod=tikz]{mdframed}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{12pt}
+\setlength{\intextsep}{0pt plus 2pt}
+
+% For setting margins
+\usepackage[margin=2in]{geometry}
+
+
+\definecolor{codeColor}{HTML}{282c34}
+\definecolor{keyWord}{HTML}{0000ff}
+\definecolor{variable}{HTML}{ffffff}
+\definecolor{CommentColor}{HTML}{aaaaaa}
+\definecolor{StrColor}{HTML}{00ff00}
+\definecolor{ruleColor}{HTML}{282c34}
+
+\graphicspath{{.}}
+
+\lstset{basicstyle=\small\footnotesize\color{variable},
+        commentstyle=\color{CommentColor},
+        stringstyle=\color{StrColor},
+        breaklines=true, 
+        showlines=false}
+
+
+\title{Assignment 2}
+\date{}
+\author{Jonas Valfridsson\\199608275377}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section*{Hello World!}%
+\label{sec:hello_world_}
+
+
+The following is a hello world program in CUDA for the GPU. It launches a thread-block with 256 threads to all print "Hello.." and their ID.
+
+\begin{mdframed}[backgroundcolor=codeColor,leftmargin=0.0cm,hidealllines=true,%
+  innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.5cm,innerbottommargin=0.10cm,
+  roundcorner=15pt]
+\begin{lstlisting}[language=C]
+#include "stdio.h"
+ 
+__global__ void cuda_hello(){
+    printf("Hello World! My thread ID is %d\n\n", threadIdx.x);
+}
+ 
+int main() {
+    
+    cuda_hello<<<1,256>>>(); 
+    cudaError_t cudaerr = cudaDeviceSynchronize();
+    if (cudaerr != cudaSuccess)
+        printf("kernel launch failed with error \"%s\".\n",
+               cudaGetErrorString(cudaerr));
+    return 0;
+}
+\end{lstlisting}
+\end{mdframed}
+
+
+What
+
+\begin{thebibliography}{1}
+
+\bibitem{key} John Doe {\em Title and stuff}  2013.
+
+\end{thebibliography}
+
+\end{document}
+
