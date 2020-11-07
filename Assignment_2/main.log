@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.15)  5 NOV 2020 15:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.15)  7 NOV 2020 15:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1190,7 +1190,17 @@ Package: geometry 2010/09/12 v5.6 Page Geometry
 \Gm@layouthoffset=\dimen261
 \Gm@layoutvoffset=\dimen262
 \Gm@dimlist=\toks39
-) (./main.aux)
+) (./main.aux
+
+LaTeX Warning: Label `fig:' multiply defined.
+
+
+LaTeX Warning: Label `fig:' multiply defined.
+
+
+LaTeX Warning: Label `fig:' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
@@ -1207,8 +1217,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count306
 \scratchdimen=\dimen263
@@ -1302,55 +1311,78 @@ LaTeX Info: Redefining \nameref on input line 42.
  (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 59.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 63.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 59.
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 65.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
-File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 65.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 63.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 84.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 84.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+<ex_2/saxpy-cpu-vs-gpu.png, id=28, 722.7pt x 433.62pt>
+File: ex_2/saxpy-cpu-vs-gpu.png Graphic file (type png)
+<use ex_2/saxpy-cpu-vs-gpu.png>
+Package pdftex.def Info: ex_2/saxpy-cpu-vs-gpu.png  used on input line 85.
+(pdftex.def)             Requested size: 308.95326pt x 185.37447pt.
+<ex_3/simulation-cpu-vs-gpu.png, id=30, 722.7pt x 433.62pt>
+File: ex_3/simulation-cpu-vs-gpu.png Graphic file (type png)
+<use ex_3/simulation-cpu-vs-gpu.png>
+Package pdftex.def Info: ex_3/simulation-cpu-vs-gpu.png  used on input line 96.
+
+(pdftex.def)             Requested size: 308.95326pt x 185.37447pt.
+ [2 <./ex_2/saxpy-cpu-vs-gpu.png>]
+<ex_4/pi-float-cpu-vs-gpu.png, id=37, 714.7503pt x 714.7503pt>
+File: ex_4/pi-float-cpu-vs-gpu.png Graphic file (type png)
+<use ex_4/pi-float-cpu-vs-gpu.png>
+Package pdftex.def Info: ex_4/pi-float-cpu-vs-gpu.png  used on input line 114.
+(pdftex.def)             Requested size: 308.95326pt x 308.96167pt.
+ [3 <./ex_3/simulation-cpu-vs-gpu.png>]
+<ex_4/pi-double-cpu-vs-gpu.png, id=44, 714.7503pt x 714.7503pt>
+File: ex_4/pi-double-cpu-vs-gpu.png Graphic file (type png)
+<use ex_4/pi-double-cpu-vs-gpu.png>
+Package pdftex.def Info: ex_4/pi-double-cpu-vs-gpu.png  used on input line 121.
+
+(pdftex.def)             Requested size: 308.95326pt x 308.96167pt.
+ [4 <./ex_4/pi-float-cpu-vs-gpu.png>] [5 <./ex_4/pi-double-cpu-vs-gpu.png>] [6]
+ [7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 211.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 211.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 84.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 84.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 211.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 211.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 29953 strings out of 494847
- 577207 string characters out of 6179080
- 688727 words of memory out of 5000000
- 32901 multiletter control sequences out of 15000+600000
- 535540 words of font info for 40 fonts, out of 8000000 for 9000
+ 30050 strings out of 494847
+ 578534 string characters out of 6179080
+ 838359 words of memory out of 5000000
+ 32945 multiletter control sequences out of 15000+600000
+ 535956 words of font info for 42 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 63i,10n,77p,10393b,1583s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmti10.pfb>
-Output written on main.pdf (2 pages, 101620 bytes).
+ 63i,10n,77p,10393b,1596s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy8.pfb>
+Output written on main.pdf (7 pages, 382545 bytes).
 PDF statistics:
- 80 PDF objects out of 1000 (max. 8388607)
- 66 compressed objects within 1 object stream
- 23 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 166 PDF objects out of 1000 (max. 8388607)
+ 138 compressed objects within 2 object streams
+ 71 named destinations out of 1000 (max. 500000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
