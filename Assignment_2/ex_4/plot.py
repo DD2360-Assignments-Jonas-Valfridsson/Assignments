@@ -3,7 +3,7 @@ import subprocess
 import numpy as np
 
 batch = [16, 32, 64, 128, 256]
-N = [10**i for i in range(5, 9)]
+N = [10**i for i in range(5, 11)]
 CPUs, GPUs = [], {b: [] for b in batch}
 CPUs_PI, GPUs_PI = [], {b: [] for b in batch}
 samples_per_thread = 2000
@@ -54,5 +54,5 @@ plt.ylabel("pi estiamte", fontsize=16)
 plt.legend(fontsize=16)
 
 plt.tight_layout()
-plt.savefig("pi-float-cpu-vs-gpu.png", bbox_inches="tight")
+plt.savefig("pi-double-cpu-vs-gpu.png", bbox_inches="tight")
 plt.show()
