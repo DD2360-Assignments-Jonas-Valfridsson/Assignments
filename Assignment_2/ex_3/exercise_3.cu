@@ -148,7 +148,7 @@ int main(int argc, char **argv) {
 
   end = std::chrono::steady_clock::now();
 
-  std::cout << "CPU " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << std::endl;
+  std::cout << "GPU " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << std::endl;
 
   par_device_result_on_host = (Particle*)malloc(sizeof(Particle) * n_par);
   cudaMemcpy(par_device_result_on_host, par_device, sizeof(Particle) * n_par, cudaMemcpyDeviceToHost);
