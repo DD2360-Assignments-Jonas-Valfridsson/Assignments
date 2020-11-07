@@ -49,10 +49,7 @@ int main(int argc, char **argv) {
   CPU_SAXPY(N, x_host, a, y_host);
   auto end = std::chrono::steady_clock::now();
 
-  std::cout
-    << "Computing SAXPY on CPU Done! CPU SAXPY took: "
-    << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << "µs ≈ "
-    << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms.\n";
+  std::cout << "CPU " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << std::endl;
 
   // store result cpu
   y_cpu_result = (float*)malloc(sizeof(float) * N);
@@ -76,7 +73,6 @@ int main(int argc, char **argv) {
     printf("Error %s", cudaGetErrorString(err));
   }
 
-
   start = std::chrono::steady_clock::now();
   // +1 to make sure we get the full array
   GPU_SAXPY<<<(N / threads) + 1, threads>>>(N, x_device, a, y_device);
@@ -87,10 +83,7 @@ int main(int argc, char **argv) {
   }
   end = std::chrono::steady_clock::now();
 
-  std::cout
-    << "Computing SAXPY on GPU Done! GPU SAXPY took: "
-    << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << "µs ≈ "
-    << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms.\n";
+  std::cout << "GPU " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << std::endl;
 
   // store gpu result
   y_gpu_result = (float*)malloc(sizeof(float) * N);
