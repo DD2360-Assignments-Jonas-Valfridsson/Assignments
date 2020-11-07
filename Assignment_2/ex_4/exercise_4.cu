@@ -13,11 +13,11 @@ __global__ void setup_gpu_rng(long long n, curandState *rng_states, long long se
   if (i < n) curand_init(seed, i, 0, &rng_states[i]);
 }
 
-__global__ void gpu_estimate_pi(long long n, curandState *rng_states, long long samples, double *pi_estimates) {
+__global__ void gpu_estimate_pi(long long n, curandState *rng_states, long long samples, float *pi_estimates) {
   long long i = blockIdx.x * blockDim.x + threadIdx.x, count = 0;
 
 
-  double x, y, z;
+  float x, y, z;
   if (i < n) {
     for (long long j = 0; j < samples; j++) {
       x = curand_uniform(&rng_states[i]);
@@ -28,14 +28,14 @@ __global__ void gpu_estimate_pi(long long n, curandState *rng_states, long long 
       if (z <= 1.0) count++;
     }
 
-    pi_estimates[i] = 4.0 * (double)count / (double)samples;
+    pi_estimates[i] = 4.0 * (float)count / (float)samples;
 
     //printf("i: %lld est: %.2f\n", i, pi_estimates[i]);
   }
 
 }
 
-double cpu_estimate_pi(long long n) {
+float cpu_estimate_pi(long long n) {
   // Calculate PI following a Monte Carlo method
   float x, y, z;
   int count;
@@ -52,7 +52,7 @@ double cpu_estimate_pi(long long n) {
     }
   }
 
-  return ((double)count / (double)n) * 4.0;
+  return ((float)count / (float)n) * 4.0;
 
 }
 
@@ -60,7 +60,7 @@ int main(int argc, char* argv[]) {
   long long samples = std::atoi(argv[1]), samples_per_thread = std::atoi(argv[2]), thread_per_block = std::atoi(argv[3]);
 
   auto start = std::chrono::steady_clock::now();
-  double pi = cpu_estimate_pi(samples);
+  float pi = cpu_estimate_pi(samples);
   auto end = std::chrono::steady_clock::now();
 
   std::cout << "CPU-PI: " << pi << std::endl;
@@ -75,20 +75,20 @@ int main(int argc, char* argv[]) {
   setup_gpu_rng<<<blocks, thread_per_block>>>(total_threads, rng, time(NULL));
 
 
-  double *device_pi_estimates, *host_pi_estimates;
-  cudaMalloc(&device_pi_estimates, sizeof(double) * total_threads);
-  host_pi_estimates = (double*)malloc(sizeof(double) * total_threads);
+  float *device_pi_estimates, *host_pi_estimates;
+  cudaMalloc(&device_pi_estimates, sizeof(float) * total_threads);
+  host_pi_estimates = (float*)malloc(sizeof(float) * total_threads);
 
   start = std::chrono::steady_clock::now();
   gpu_estimate_pi<<<blocks, thread_per_block>>>(total_threads, rng, samples_per_thread, device_pi_estimates);
 
-  cudaMemcpy(host_pi_estimates, device_pi_estimates, sizeof(double) * total_threads, cudaMemcpyDeviceToHost);
-  double gpu_pi = 0;
+  cudaMemcpy(host_pi_estimates, device_pi_estimates, sizeof(float) * total_threads, cudaMemcpyDeviceToHost);
+  float gpu_pi = 0;
   for (long long i = 0; i < total_threads; i++) {
     gpu_pi += host_pi_estimates[i];
   }
 
-  gpu_pi /= (double)total_threads;
+  gpu_pi /= (float)total_threads;
   end = std::chrono::steady_clock::now();
 
   std::cout << "GPU-PI: " << gpu_pi << std::endl;
