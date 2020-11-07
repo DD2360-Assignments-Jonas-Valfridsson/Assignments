@@ -122,10 +122,7 @@ int main(int argc, char **argv) {
 
   auto end = std::chrono::steady_clock::now();
 
-  std::cout
-    << "Simulating on CPU took: "
-    << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << "µs ≈ "
-    << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms.\n";
+  std::cout << "CPU " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << std::endl;
 
 
   // reset time
@@ -151,11 +148,7 @@ int main(int argc, char **argv) {
 
   end = std::chrono::steady_clock::now();
 
-  std::cout
-    << "Simulating on GPU took: "
-    << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << "µs ≈ "
-    << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms.\n";
-
+  std::cout << "CPU " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << std::endl;
 
   par_device_result_on_host = (Particle*)malloc(sizeof(Particle) * n_par);
   cudaMemcpy(par_device_result_on_host, par_device, sizeof(Particle) * n_par, cudaMemcpyDeviceToHost);
