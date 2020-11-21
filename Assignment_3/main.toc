@@ -1,0 +1,21 @@
+\contentsline {section}{\numberline {1}Exercise (1)}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Performance without shared memory}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Mapping of GPU threads and thread-blocks}{4}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Why shared memory can improve performance}{4}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}Why we get black squares}{4}{subsection.1.4}
+\contentsline {subsection}{\numberline {1.5}Performance With Shared Memory}{5}{subsection.1.5}
+\contentsline {section}{\numberline {2}Exercise (2)}{6}{section.2}
+\contentsline {subsection}{\numberline {2.1}Trade-Offs Pageable vs Pinned}{11}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Pinned Memory Performance Improvement}{11}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}What is managed memory?}{12}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}On tegner a implicit copy happends, why?}{12}{subsection.2.4}
+\contentsline {section}{\numberline {3}Exercise (3)}{12}{section.3}
+\contentsline {subsection}{\numberline {3.1}What are advantages of Streams?}{14}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}What is the performance improvement?}{14}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}What is the impact of batch size?}{15}{subsection.3.3}
+\contentsline {section}{\numberline {4}cuBLAS}{15}{section.4}
+\contentsline {subsection}{\numberline {4.1}Why matrix size has to be multiple of 16?}{15}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Why two syncthreads?}{16}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Why BA instead of AB?}{16}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Different input sizes}{16}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Benchmarking}{17}{subsection.4.5}
