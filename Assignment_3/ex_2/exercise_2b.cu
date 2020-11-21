@@ -136,7 +136,7 @@ int main(int argc, char **argv) {
     //printf("Error %s", cudaGetErrorString(err));
     //}
 
-    memcpy(par_device, par_host, sizeof(Particle) * n_par);
+    //memcpy(par_device, par_host, sizeof(Particle) * n_par);
 
     t += 1.0;
   }
