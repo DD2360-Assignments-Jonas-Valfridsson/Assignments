@@ -113,7 +113,7 @@ const char *vadd_program =
 "}                                          \n";
 
 
-int main(int argc, char *argv) {
+int main(int argc, char **argv) {
   cl_platform_id * platforms; cl_uint     n_platform;
 
   cl_int err = clGetPlatformIDs(0, NULL, &n_platform); CHK_ERROR(err);

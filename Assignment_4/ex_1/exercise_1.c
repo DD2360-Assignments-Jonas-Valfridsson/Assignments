@@ -11,10 +11,19 @@
 const char* clGetErrorString(int);
 
 
-const char *mykernel = ""; //TODO: Write your kernel here
+const char *hello_world =
+"__kernel                                                              \n"
+"void hello_world ()                                                   \n"
+"{                                                                     \n"
+"    int x = get_global_id(0);                                         \n"
+"    int y = get_global_id(1);                                         \n"
+"    int z = get_global_id(2);                                         \n"
+"                                                                      \n"
+"    printf(\"Hello World! My threadId is (%d, %d, %d)\\n\", x, y, z); \n"
+"}                                                                     \n";
 
 
-int main(int argc, char *argv) {
+int main(int argc, char **argv) {
   cl_platform_id * platforms; cl_uint     n_platform;
 
   // Find OpenCL Platforms
@@ -35,8 +44,42 @@ int main(int argc, char *argv) {
   cl_command_queue cmd_queue = clCreateCommandQueue(context, device_list[0], 0, &err);CHK_ERROR(err); 
 
   /* Insert your own code here */
+
+  /* Create the OpenCL program */
+  cl_program program = clCreateProgramWithSource(context, 1,(const char **)&hello_world, NULL, &err);CHK_ERROR(err);
+  err = clBuildProgram(program, 1, device_list, NULL, NULL, NULL);
+  if (err != CL_SUCCESS) {
+    size_t len;
+    char buffer[2048];
+    clGetProgramBuildInfo(program, device_list[0], CL_PROGRAM_BUILD_LOG, sizeof(buffer), buffer, &len); 
+    fprintf(stderr,"Build error: %s\n", buffer); exit(0);
+  }
+
+  cl_kernel kernel = clCreateKernel(program, "hello_world", &err);CHK_ERROR(err);
+  cl_event event;
+
+  const size_t kernel_dim = 3;
+  size_t n_workitem[kernel_dim];
+
+  n_workitem[0] = 3;
+  n_workitem[1] = 3;
+  n_workitem[2] = 3;
+
+  size_t workgroup_size[kernel_dim];
+  workgroup_size[0] = 1;
+  workgroup_size[1] = 1;
+  workgroup_size[2] = 1;
+
+  err = clEnqueueNDRangeKernel(cmd_queue, kernel, 
+      kernel_dim, NULL, n_workitem, workgroup_size, 0, NULL, NULL);CHK_ERROR(err);
   
-  // Finally, release all that we have allocated.
+  /* Wait and make sure everything finishes */
+  err = clFlush(cmd_queue);CHK_ERROR(err);
+  err = clFinish(cmd_queue);CHK_ERROR(err);
+  /* Finally, release all that we have allocated. */
+
+  err = clReleaseKernel(kernel);CHK_ERROR(err);
+  err = clReleaseProgram(program);CHK_ERROR(err);
   err = clReleaseCommandQueue(cmd_queue);CHK_ERROR(err);
   err = clReleaseContext(context);CHK_ERROR(err);
   free(platforms);

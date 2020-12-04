@@ -1,0 +1,4 @@
+-std=c++11
+-L/usr/local/cuda-10.1/targets/x86_64-linux/lib
+-lOpenCL
+
