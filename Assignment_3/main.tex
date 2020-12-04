@@ -29,11 +29,11 @@
 \graphicspath{{.}}
 
 \lstset{backgroundcolor=\color{codeColor}, 
-        basicstyle=\fontfamily{pcr}\selectfont\footnotesize\color{variable},
-        commentstyle=\color{CommentColor},
-        stringstyle=\color{StrColor},
-        breaklines=true, 
-        rulecolor=\color{codeColor}}
+basicstyle=\fontfamily{pcr}\selectfont\footnotesize\color{variable},
+commentstyle=\color{CommentColor},
+stringstyle=\color{StrColor},
+breaklines=true, 
+rulecolor=\color{codeColor}}
 
 \title{Assignment 3}
 \date{}
@@ -64,13 +64,13 @@ On my 1080GTX-TI the execution time is:
 \begin{center}
   \begin{tabular}{ | c | c | c | c | }
     \hline
-           & hk.bmp & nyc.bmp & rome.bmp\\ \hline
-           gray-scale-gpu & 13ms & 23ms & 8ms\\ \hline
-           gray-scale-cpu & 55ms & 101ms & 34ms\\ \hline
-            gaussian-gpu & 13ms & 23ms & 8ms\\ \hline
-           gaussian-cpu & 380ms & 688ms & 234ms \\ \hline
-            sobel-gpu & 13ms & 23ms & 8ms \\  \hline
-            sobel-cpu & 792ms & 1434ms & 468ms \\  \hline
+    & hk.bmp & nyc.bmp & rome.bmp\\ \hline
+    gray-scale-gpu & 13ms & 23ms & 8ms\\ \hline
+    gray-scale-cpu & 55ms & 101ms & 34ms\\ \hline
+    gaussian-gpu & 13ms & 23ms & 8ms\\ \hline
+    gaussian-cpu & 380ms & 688ms & 234ms \\ \hline
+    sobel-gpu & 13ms & 23ms & 8ms \\  \hline
+    sobel-cpu & 792ms & 1434ms & 468ms \\  \hline
     \hline
   \end{tabular}
 \end{center}
@@ -80,18 +80,18 @@ Here are some more detailed stats for the NYC.bmp
 \begin{mdframed}[backgroundcolor=codeColor,leftmargin=0.0cm,hidealllines=true,%
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.5cm,innerbottommargin=0.10cm,
   roundcorner=15pt]
-\begin{lstlisting}[language=bash]
-==26458== Profiling application: ./hw3_ex1 images/nyc.bmp
-==26458== Profiling result:
-Time(%)      Time     Calls       Avg  Name
- 44.29%  44.107ms         1  44.107ms  [CUDA memcpy HtoD]
- 37.71%  37.547ms         3  12.516ms  [CUDA memcpy DtoH]
+  \begin{lstlisting}[language=bash]
+  ==26458== Profiling application: ./hw3_ex1 images/nyc.bmp
+  ==26458== Profiling result:
+  Time(%)      Time     Calls       Avg  Name
+  44.29%  44.107ms         1  44.107ms  [CUDA memcpy HtoD]
+  37.71%  37.547ms         3  12.516ms  [CUDA memcpy DtoH]
   7.96%  7.9257ms         1  7.9257ms  gpu_grayscale(int, ..)
   7.92%  7.8828ms         1  7.8828ms  gpu_gaussian(int, ..)
   2.12%  2.1115ms         1  2.1115ms  gpu_sobel(int, ..)
   0.00%  3.5840us         2  1.7920us  [CUDA memset]
- 53.89%  123.09ms         3  41.030ms  cudaMalloc
- 45.02%  102.84ms         4  25.709ms  cudaMemcpy
+  53.89%  123.09ms         3  41.030ms  cudaMalloc
+  45.02%  102.84ms         4  25.709ms  cudaMemcpy
   0.64%  1.4540ms         3  484.66us  cudaFree
   0.22%  501.57us         1  501.57us  cuDeviceTotalMem
   0.15%  336.92us        96  3.5090us  cuDeviceGetAttribute
@@ -102,7 +102,7 @@ Time(%)      Time     Calls       Avg  Name
   0.00%  6.5460us         2  3.2730us  cuDeviceGet
   0.00%  1.9270us         3     642ns  cuDeviceGetCount
   0.00%     384ns         1     384ns  cuDeviceGetUuid
-\end{lstlisting}
+  \end{lstlisting}
 \end{mdframed}
 
 
@@ -142,13 +142,13 @@ File sizes are: hk.bmp is 38MB nyc.bmp is 69MB and rome.bmp is 24MB
 \begin{center}
   \begin{tabular}{ | c | c | c | c | }
     \hline
-           & hk.bmp & nyc.bmp & rome.bmp\\ \hline
-           gray-scale-gpu & 13ms & 23ms & 8ms\\ \hline
-           gray-scale-cpu & 55ms & 101ms & 34ms\\ \hline
-            gaussian-gpu & 13ms & 23ms & 8ms\\ \hline
-           gaussian-cpu & 380ms & 688ms & 234ms \\ \hline
-            sobel-gpu & 13ms & 23ms & 8ms \\  \hline
-            sobel-cpu & 792ms & 1434ms & 468ms \\  \hline
+    & hk.bmp & nyc.bmp & rome.bmp\\ \hline
+    gray-scale-gpu & 13ms & 23ms & 8ms\\ \hline
+    gray-scale-cpu & 55ms & 101ms & 34ms\\ \hline
+    gaussian-gpu & 13ms & 23ms & 8ms\\ \hline
+    gaussian-cpu & 380ms & 688ms & 234ms \\ \hline
+    sobel-gpu & 13ms & 23ms & 8ms \\  \hline
+    sobel-cpu & 792ms & 1434ms & 468ms \\  \hline
     \hline
   \end{tabular}
 \end{center}
@@ -158,18 +158,18 @@ Here are some more detailed stats for the NYC.bmp
 \begin{mdframed}[backgroundcolor=codeColor,leftmargin=0.0cm,hidealllines=true,%
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.5cm,innerbottommargin=0.10cm,
   roundcorner=15pt]
-\begin{lstlisting}[language=bash]
-==2163== Profiling application: ./hw3_ex1 images/nyc.bmp
-==2163== Profiling result:
-Time(%)      Time     Calls       Avg  Name
- 39.27%  44.065ms         1  44.065ms  [CUDA memcpy HtoD]
- 38.87%  43.616ms         3  14.539ms  [CUDA memcpy DtoH]
+  \begin{lstlisting}[language=bash]
+  ==2163== Profiling application: ./hw3_ex1 images/nyc.bmp
+  ==2163== Profiling result:
+  Time(%)      Time     Calls       Avg  Name
+  39.27%  44.065ms         1  44.065ms  [CUDA memcpy HtoD]
+  38.87%  43.616ms         3  14.539ms  [CUDA memcpy DtoH]
   7.64%  8.5695ms         1  8.5695ms  gpu_sobel(int, ...)
   7.15%  8.0183ms         1  8.0183ms  gpu_gaussian(int, ...)
   7.06%  7.9265ms         1  7.9265ms  gpu_grayscale(int, ...)
   0.00%  3.6800us         2  1.8400us  [CUDA memset]
- 50.79%  123.32ms         3  41.107ms  cudaMalloc
- 47.58%  115.52ms         4  28.879ms  cudaMemcpy
+  50.79%  123.32ms         3  41.107ms  cudaMalloc
+  47.58%  115.52ms         4  28.879ms  cudaMemcpy
   1.37%  3.3220ms         3  1.1073ms  cudaFree
   0.09%  230.25us        96  2.3980us  cuDeviceGetAttribute
   0.09%  221.73us         1  221.73us  cuDeviceTotalMem
@@ -180,7 +180,7 @@ Time(%)      Time     Calls       Avg  Name
   0.00%     896ns         3     298ns  cuDeviceGetCount
   0.00%     710ns         2     355ns  cuDeviceGet
   0.00%     167ns         1     167ns  cuDeviceGetUuid
-\end{lstlisting}
+  \end{lstlisting}
 \end{mdframed}
 
 
@@ -198,14 +198,14 @@ With unpinned memory
 \begin{mdframed}[backgroundcolor=codeColor,leftmargin=0.0cm,hidealllines=true,%
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.5cm,innerbottommargin=0.10cm,
   roundcorner=15pt]
-\begin{lstlisting}[language=bash]
-==13944== Profiling ..: ./exercise_2 10000000 100 64
-==13944== Profiling result:
-Time(%)      Time     Calls       Avg  Name
- 43.77%  2.66025s       100  26.602ms  [CUDA memcpy DtoH]
- 43.06%  2.61738s       100  26.174ms  [CUDA memcpy HtoD]
- 13.17%  800.26ms       100  8.0026ms  gpu_step(int, ..)
- 98.02%  6.09644s       200  30.482ms  cudaMemcpy
+  \begin{lstlisting}[language=bash]
+  ==13944== Profiling ..: ./exercise_2 10000000 100 64
+  ==13944== Profiling result:
+  Time(%)      Time     Calls       Avg  Name
+  43.77%  2.66025s       100  26.602ms  [CUDA memcpy DtoH]
+  43.06%  2.61738s       100  26.174ms  [CUDA memcpy HtoD]
+  13.17%  800.26ms       100  8.0026ms  gpu_step(int, ..)
+  98.02%  6.09644s       200  30.482ms  cudaMemcpy
   1.96%  121.80ms         1  121.80ms  cudaMalloc
   0.01%  881.49us       100  8.8140us  cudaLaunchKernel
   0.00%  297.28us         1  297.28us  cudaFree
@@ -217,7 +217,7 @@ Time(%)      Time     Calls       Avg  Name
   0.00%  3.3850us         2  1.6920us  cuDeviceGet
   0.00%     849ns         3     283ns  cuDeviceGetCount
   0.00%     165ns         1     165ns  cuDeviceGetUuid
-\end{lstlisting}
+  \end{lstlisting}
 \end{mdframed}
 
 \newpage 
@@ -226,14 +226,14 @@ With pinned memory
 \begin{mdframed}[backgroundcolor=codeColor,leftmargin=0.0cm,hidealllines=true,%
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.5cm,innerbottommargin=0.10cm,
   roundcorner=15pt]
-\begin{lstlisting}[language=bash]
-==17937== Profiling ..: ./exercise_2 10000000 100 64
-==17937== Profiling result:
-Time(%)      Time     Calls       Avg  Name
- 42.08%  2.12402s       100  21.240ms  [CUDA memcpy HtoD]
- 41.81%  2.11049s       100  21.105ms  [CUDA memcpy DtoH]
- 16.11%  813.29ms       100  8.1329ms  gpu_step(int, ..)
- 96.89%  5.05152s       200  25.258ms  cudaMemcpy
+  \begin{lstlisting}[language=bash]
+  ==17937== Profiling ..: ./exercise_2 10000000 100 64
+  ==17937== Profiling result:
+  Time(%)      Time     Calls       Avg  Name
+  42.08%  2.12402s       100  21.240ms  [CUDA memcpy HtoD]
+  41.81%  2.11049s       100  21.105ms  [CUDA memcpy DtoH]
+  16.11%  813.29ms       100  8.1329ms  gpu_step(int, ..)
+  96.89%  5.05152s       200  25.258ms  cudaMemcpy
   3.08%  160.38ms         1  160.38ms  cudaHostAlloc
   0.01%  531.10us       100  5.3110us  cudaLaunchKernel
   0.01%  490.40us         1  490.40us  cudaMalloc
@@ -246,7 +246,7 @@ Time(%)      Time     Calls       Avg  Name
   0.00%     861ns         2     430ns  cuDeviceGet
   0.00%     813ns         3     271ns  cuDeviceGetCount
   0.00%     164ns         1     164ns  cuDeviceGetUuid
-\end{lstlisting}
+  \end{lstlisting}
 \end{mdframed}
 
 
@@ -259,13 +259,13 @@ With managed-memory
 \begin{mdframed}[backgroundcolor=codeColor,leftmargin=0.0cm,hidealllines=true,%
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.5cm,innerbottommargin=0.10cm,
   roundcorner=15pt]
-\begin{lstlisting}[language=bash]
-==20413== Profiling ..: ./exercise_2b 10000000 100 64
-==20413== Profiling result:
-Time(%)      Time     Calls       Avg Name
-100.00%  303.82ms       100  3.0382ms gpu_step(int, ..)
- 63.97%  303.54ms         1  303.54ms cudaDeviceSynchronize
- 30.14%  143.02ms         1  143.02ms cudaMallocManaged
+  \begin{lstlisting}[language=bash]
+  ==20413== Profiling ..: ./exercise_2b 10000000 100 64
+  ==20413== Profiling result:
+  Time(%)      Time     Calls       Avg Name
+  100.00%  303.82ms       100  3.0382ms gpu_step(int, ..)
+  63.97%  303.54ms         1  303.54ms cudaDeviceSynchronize
+  30.14%  143.02ms         1  143.02ms cudaMallocManaged
   3.67%  17.424ms       100  174.24us cudaLaunchKernel
   2.06%  9.7601ms         1  9.7601ms cudaFree
   0.08%  402.42us         1  402.42us cuDeviceTotalMem
@@ -276,14 +276,14 @@ Time(%)      Time     Calls       Avg Name
   0.00%  1.6650us         3     555ns cuDeviceGetCount
   0.00%     334ns         1     334ns cuDeviceGetUuid
 
-==20413== Unified Memory profiling result:
-Device "GeForce GTX 1080 Ti (0)"
-   Count  Avg Size Total Size  Total Time  Name
-    5387  35.190KB 185.1289MB  18.68624ms  Host To Device
-    1376  170.28KB 228.8203MB  19.11085ms  Device To Host
-     356         -          -  41.64218ms  Gpu page fault ..
-Total CPU Page faults: 1378
-\end{lstlisting}
+  ==20413== Unified Memory profiling result:
+  Device "GeForce GTX 1080 Ti (0)"
+  Count  Avg Size Total Size  Total Time  Name
+  5387  35.190KB 185.1289MB  18.68624ms  Host To Device
+  1376  170.28KB 228.8203MB  19.11085ms  Device To Host
+  356         -          -  41.64218ms  Gpu page fault ..
+  Total CPU Page faults: 1378
+  \end{lstlisting}
 \end{mdframed}
 
 Managed memory appears significantly faster, but I am not doing any actual copies in the inner loop with it. What if we read the managed memory on the CPU inside the loop in each iteration?
@@ -293,12 +293,12 @@ Managed memory appears significantly faster, but I am not doing any actual copie
 \begin{mdframed}[backgroundcolor=codeColor,leftmargin=0.0cm,hidealllines=true,%
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.5cm,innerbottommargin=0.10cm,
   roundcorner=15pt]
-\begin{lstlisting}[language=bash]
-==20996== Profiling application: ./exercise_2b 10000000 100 64
-==20996== Profiling result:
-Time(%)      Time     Calls       Avg Name
-100.00%  6.03312s       100  60.331ms gpu_step(int, ..)
- 88.10%  143.43ms         1  143.43ms cudaMallocManaged
+  \begin{lstlisting}[language=bash]
+  ==20996== Profiling application: ./exercise_2b 10000000 100 64
+  ==20996== Profiling result:
+  Time(%)      Time     Calls       Avg Name
+  100.00%  6.03312s       100  60.331ms gpu_step(int, ..)
+  88.10%  143.43ms         1  143.43ms cudaMallocManaged
   5.17%  8.4103ms         1  8.4103ms cudaDeviceSynchronize
   4.30%  6.9965ms         1  6.9965ms cudaFree
   1.97%  3.2093ms       100  32.093us cudaLaunchKernel
@@ -310,18 +310,18 @@ Time(%)      Time     Calls       Avg Name
   0.00%  1.1110us         2     555ns cuDeviceGet
   0.00%     327ns         1     327ns cuDeviceGetUuid
 
-==20996== Unified Memory profiling result:
-Device "GeForce GTX 1080 Ti (0)"
-   Count  Avg Size   Total Size  Total Time  Name
+  ==20996== Unified Memory profiling result:
+  Device "GeForce GTX 1080 Ti (0)"
+  Count  Avg Size   Total Size  Total Time  Name
   524270  38.060KB   19.02934GB   2.280476s  Host To Device
   120118  164.17KB   18.80582GB   1.885460s  Device To Host
-   42837         -            -   5.648922s  Gpu page fault ..
-     355         -            -  227.8919ms  Page throttles
-    3762  4.0000KB   14.69531MB           -  Memory thrashes
-Total CPU Page faults: 61759
-Total CPU thrashes: 3762
-Total CPU throttles: 34
-\end{lstlisting}
+  42837         -            -   5.648922s  Gpu page fault ..
+  355         -            -  227.8919ms  Page throttles
+  3762  4.0000KB   14.69531MB           -  Memory thrashes
+  Total CPU Page faults: 61759
+  Total CPU thrashes: 3762
+  Total CPU throttles: 34
+  \end{lstlisting}
 \end{mdframed}
 
 What if we write to it in each iteration?
@@ -331,12 +331,12 @@ What if we write to it in each iteration?
 \begin{mdframed}[backgroundcolor=codeColor,leftmargin=0.0cm,hidealllines=true,%
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.5cm,innerbottommargin=0.10cm,
   roundcorner=15pt]
-\begin{lstlisting}[language=bash]
-==21095== Profiling application: ./exercise_2b 10000000 100 64
-==21095== Profiling result:
-Time(%)      Time     Calls       Avg  Name
-100.00%  5.50782s       100  55.078ms  gpu_step(int, ...)
- 91.37%  145.94ms         1  145.94ms  cudaMallocManaged
+  \begin{lstlisting}[language=bash]
+  ==21095== Profiling application: ./exercise_2b 10000000 100 64
+  ==21095== Profiling result:
+  Time(%)      Time     Calls       Avg  Name
+  100.00%  5.50782s       100  55.078ms  gpu_step(int, ...)
+  91.37%  145.94ms         1  145.94ms  cudaMallocManaged
   6.25%  9.9809ms         1  9.9809ms  cudaFree
   2.06%  3.2922ms       100  32.922us  cudaLaunchKernel
   0.15%  236.62us         1  236.62us  cuDeviceTotalMem
@@ -348,19 +348,19 @@ Time(%)      Time     Calls       Avg  Name
   0.00%     575ns         2     287ns  cuDeviceGet
   0.00%     162ns         1     162ns  cuDeviceGetUuid
 
-==21095== Unified Memory profiling result:
-Device "GeForce GTX 1080 Ti (0)"
-   Count  Avg Size Total Size  Total Time  Name
+  ==21095== Unified Memory profiling result:
+  Device "GeForce GTX 1080 Ti (0)"
+  Count  Avg Size Total Size  Total Time  Name
   473566  38.175KB 17.24089GB   2.060307s  Host To Device
   110407  163.73KB 17.23896GB   1.725519s  Device To Host
-   39222         -          -   5.069925s  Gpu page fault ...
-     311         -          -  159.9216ms  Page throttles
-    3554  4.0000KB 13.88281MB           -  Memory thrashes
-Total CPU Page faults: 57047
-Total CPU thrashes: 3554
-Total CPU throttles: 27
+  39222         -          -   5.069925s  Gpu page fault ...
+  311         -          -  159.9216ms  Page throttles
+  3554  4.0000KB 13.88281MB           -  Memory thrashes
+  Total CPU Page faults: 57047
+  Total CPU thrashes: 3554
+  Total CPU throttles: 27
 
-\end{lstlisting}
+  \end{lstlisting}
 \end{mdframed}
 
 In summary, pinned memory was 17\% faster than unpinned memory in my benchmark, managed memory was 2.2x faster than pinned memory when I don't actually read or write to it on the CPU. If i read or write to it on CPU in the loop then managed
@@ -422,14 +422,14 @@ Here's the more detailed nvprof from when we use 9streams
 \begin{mdframed}[backgroundcolor=codeColor,leftmargin=0.0cm,hidealllines=true,%
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.5cm,innerbottommargin=0.10cm,
   roundcorner=15pt]
-\begin{lstlisting}[language=bash]
-==18856== Profiling ...: ./exercise_3 10000000 100 64 9
-==18856== Profiling result:
-Time(%)      Time  Calls       Avg Name
- 36.97%  3.05627s    900  3.3959ms [CUDA memcpy HtoD]
- 35.70%  2.95184s    900  3.2798ms [CUDA memcpy DtoH]
- 27.33%  2.25965s    900  2.5107ms gpu_step(int, ..)
- 94.71%  3.05729s      1  3.05729s cudaDeviceSynchronize
+  \begin{lstlisting}[language=bash]
+  ==18856== Profiling ...: ./exercise_3 10000000 100 64 9
+  ==18856== Profiling result:
+  Time(%)      Time  Calls       Avg Name
+  36.97%  3.05627s    900  3.3959ms [CUDA memcpy HtoD]
+  35.70%  2.95184s    900  3.2798ms [CUDA memcpy DtoH]
+  27.33%  2.25965s    900  2.5107ms gpu_step(int, ..)
+  94.71%  3.05729s      1  3.05729s cudaDeviceSynchronize
   4.99%  161.13ms      1  161.13ms cudaHostAlloc
   0.14%  4.4937ms   1800  2.4960us cudaMemcpyAsync
   0.11%  3.5283ms    900  3.9200us cudaLaunchKernel
@@ -444,7 +444,7 @@ Time(%)      Time  Calls       Avg Name
   0.00%  1.6360us      3     545ns cuDeviceGetCount
   0.00%     320ns      1     320ns cuDeviceGetUuid
 
-\end{lstlisting}
+  \end{lstlisting}
 \end{mdframed}
 
 And here's a snapshot of the visual profiler
@@ -486,20 +486,20 @@ result from my implementations:
 \begin{mdframed}[backgroundcolor=codeColor,leftmargin=0.0cm,hidealllines=true,%
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.5cm,innerbottommargin=0.10cm,
   roundcorner=15pt]
-\begin{lstlisting}[language=bash]
-./exercise_3 -s 1024 -v
+  \begin{lstlisting}[language=bash]
+  ./exercise_3 -s 1024 -v
 
-Matrix size: 1024x1024
-Matrix size: 1024x1024
-Grid size: 64x64
-Tile size: 16x16
-Run CPU sgemm: 1
+  Matrix size: 1024x1024
+  Matrix size: 1024x1024
+  Grid size: 64x64
+  Tile size: 16x16
+  Run CPU sgemm: 1
 
-CPU matmul:                     3663.794000 ms
-GPU matmul (global memory):     160.025000 ms
-GPU matmul (shared memory):     17.476000 ms
-GPU cuBLAS matmul:              2.834000 ms
-\end{lstlisting}
+  CPU matmul:                     3663.794000 ms
+  GPU matmul (global memory):     160.025000 ms
+  GPU matmul (shared memory):     17.476000 ms
+  GPU cuBLAS matmul:              2.834000 ms
+  \end{lstlisting}
 \end{mdframed}
 
 
@@ -511,7 +511,21 @@ so that we can tile the matrix (subdivide it evenly into our tiles).
 
 \subsection{Why two syncthreads?}%
 
-The first syncthreads is to make sure the tile is completely updated before we start doing the sub-multiplication. The second sync is to avoid that that gets overwritten before the sub-multiplication is done.
+The first syncthreads is to make sure the tile is completely updated before we start doing the sub-multiplication. The second sync is to avoid that the tile gets overwritten before the sub-multiplication is done.
+
+\subsubsection{Directive to Improve}%
+\label{ssub:directive_to_improve}
+
+We can unroll the loop with a pragma
+
+\subsubsection{Large speed-up}%
+\label{ssub:large_speed_up}
+
+Because we do TILE\_SIZE number of reads from the shared
+memory and we don't have to do a lot of work to fill the
+shared memory. The explanation is that we're better utilizing
+it here.
+
 
 \subsection{Why BA instead of AB?}%
 \label{sub:why_ba_instead_of_ab_}

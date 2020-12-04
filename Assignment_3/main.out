@@ -16,6 +16,8 @@
 \BOOKMARK [1][-]{section.4}{cuBLAS}{}% 16
 \BOOKMARK [2][-]{subsection.4.1}{Why matrix size has to be multiple of 16?}{section.4}% 17
 \BOOKMARK [2][-]{subsection.4.2}{Why two syncthreads?}{section.4}% 18
-\BOOKMARK [2][-]{subsection.4.3}{Why BA instead of AB?}{section.4}% 19
-\BOOKMARK [2][-]{subsection.4.4}{Different input sizes}{section.4}% 20
-\BOOKMARK [2][-]{subsection.4.5}{Benchmarking}{section.4}% 21
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Directive to Improve}{subsection.4.2}% 19
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Large speed-up}{subsection.4.2}% 20
+\BOOKMARK [2][-]{subsection.4.3}{Why BA instead of AB?}{section.4}% 21
+\BOOKMARK [2][-]{subsection.4.4}{Different input sizes}{section.4}% 22
+\BOOKMARK [2][-]{subsection.4.5}{Benchmarking}{section.4}% 23

@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1605971009 "main.tex" "main.pdf" "main" 1605971012
+["pdflatex"] 1605975797 "main.tex" "main.pdf" "main" 1605975801
   "/etc/texmf/web2c/texmf.cnf" 1571400076 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
@@ -165,13 +165,13 @@
   "ex_3/ex_bonus/simulation-time.png" 1605970752 17884 4375d3429892e5be7d3764998e493405 ""
   "ex_3/nvvprof.png" 1605962970 32567 a51893de85d7369d7313f5ec840bf85d ""
   "ex_3/simulation-time.png" 1605961756 109074 4e9f92d07da333e325aff1604fc29200 ""
-  "main.aux" 1605971009 5433 799bdec646211d966aebbca0ff11652d ""
-  "main.out" 1605971009 1545 1bdb8588dd9cf1c7459232de48bd82f7 ""
-  "main.tex" 1605971012 23513 21a4e7ed41c2798d4abeb9c65d369853 ""
-  "main.toc" 1605971009 1893 dd6663ae5e33c142afc5faa168a45327 ""
+  "main.aux" 1605975798 5833 c44dfde1f1eae5d1758fb078644a1aea ""
+  "main.out" 1605975798 1699 844fe62dd0ce7420f9726d7eb3d3d288 ""
+  "main.tex" 1605975801 23870 0c49b57d7675726912a8319241ea8d68 ""
+  "main.toc" 1605975798 2079 d08d5b461b478d5cd8c57f9c0f5080e2 ""
   (generated)
   "main.log"
   "main.aux"
-  "main.toc"
-  "main.pdf"
   "main.out"
+  "main.pdf"
+  "main.toc"

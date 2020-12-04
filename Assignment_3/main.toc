@@ -16,6 +16,8 @@
 \contentsline {section}{\numberline {4}cuBLAS}{15}{section.4}
 \contentsline {subsection}{\numberline {4.1}Why matrix size has to be multiple of 16?}{15}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Why two syncthreads?}{16}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Directive to Improve}{16}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Large speed-up}{16}{subsubsection.4.2.2}
 \contentsline {subsection}{\numberline {4.3}Why BA instead of AB?}{16}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Different input sizes}{16}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.4}Different input sizes}{17}{subsection.4.4}
 \contentsline {subsection}{\numberline {4.5}Benchmarking}{17}{subsection.4.5}
