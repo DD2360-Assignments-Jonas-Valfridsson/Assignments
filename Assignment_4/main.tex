@@ -232,6 +232,15 @@ Comparing it to my CUDA benchmark
 
 They are very similar, expect that the CUDA seems to be doing a bit better with the largest arrays. But this might just be because the way I am benchmarking is maybe not optimal.
 
+\section{Discuss Reflect Contrast}%
+\label{sec:discuss_reflect_contrast}
+
+I really don't like that OpenCL does runtime compilation, I think that is a horrible pattern. The fact that OpenCL promises to work across so many devices is what makes it attractive though. But I am wondering if writing for
+OpenCL once or just writing once per usable device would be the approach I take, since you still have to do so many device checks in OpenCL. 
+
+For me personally I would not use OpenCL in its current state, the run-time compilation really turned me off. I much prefer Cuda in that aspect - and if I ever use other GPUs or devices i'll just have to port my code, which
+I believe will be fine. Performance-wise OpenCL and Cuda was very similar for me, potentially Cuda was a little faster but that might have just been variance in my benchmarks.
+
 \end{document}
 
 

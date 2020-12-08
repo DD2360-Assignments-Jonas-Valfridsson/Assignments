@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1607090972 "main.tex" "main.pdf" "main" 1607090980
+["pdflatex"] 1607434236 "main.tex" "main.pdf" "main" 1607434242
   "/etc/texmf/web2c/texmf.cnf" 1571400076 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
@@ -169,13 +169,13 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1579082956 813977 63168588a4c5b8b9aeb335ab0e4642a2 ""
   "ex_2/saxpy-cpu-vs-gpu-cuda.png" 1607090831 35995 33085778fb776a1c6f0ffb84539485a1 ""
   "ex_2/saxpy-cpu-vs-gpu.png" 1607090587 35414 35433f1ae3b9165b84658e5b3bb07173 ""
-  "main.aux" 1607090973 1686 7e8c044521a6c0750cfb47856e2b9b7d ""
-  "main.out" 1607090973 86 baddd6a76035a84da46bf7b73bb585b8 ""
-  "main.tex" 1607090980 8660 37e2cfb8a27d3444a1a570a3e8ff3519 ""
-  "main.toc" 1607090973 126 8ebcc6426dcf926c3e2e3d9579463c28 ""
+  "main.aux" 1607434236 1870 de92a05d8b897ee80c301f46ab7443db ""
+  "main.out" 1607434236 145 7651f1520b488692c136f194892c95dc ""
+  "main.tex" 1607434241 9503 d04348b90cd8f96a68bd2fef32a80660 ""
+  "main.toc" 1607434236 205 3c0c2460b42de7b1d37820914b6a23b9 ""
   (generated)
-  "main.log"
-  "main.out"
-  "main.toc"
   "main.aux"
+  "main.toc"
+  "main.out"
+  "main.log"
   "main.pdf"
