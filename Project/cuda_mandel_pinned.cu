@@ -86,7 +86,6 @@ void fill_colors(char *colors, int max_iter) {
 
 int main(int argc, char **argv) {
   int write_to_file_flag = std::atoi(argv[1]);
-
     
   int x_pixels = 19968, y_pixels = 13730, max_iter = 150;
   int n_pixels = x_pixels * y_pixels;
@@ -95,8 +94,7 @@ int main(int argc, char **argv) {
 
   size_t pixel_size = sizeof(char) * n_pixels * 3; // * 3 for RGB
   // This allocates pinned memory to speed-up memory transfers
-  host_pixels = (char*)malloc(pixel_size);
-
+  CHECK_CUDA_ERR(cudaMallocHost(&host_pixels, pixel_size));
   CHECK_CUDA_ERR(cudaMalloc(&device_pixels, pixel_size));
 
   size_t color_size = sizeof(char) * (max_iter * 3 + 3);
@@ -170,7 +168,7 @@ int main(int argc, char **argv) {
     image << 0x00 << 0x00;	
   }
 
-  free(host_pixels);
+  CHECK_CUDA_ERR(cudaFreeHost(host_pixels));
   CHECK_CUDA_ERR(cudaFreeHost(host_colors));
   CHECK_CUDA_ERR(cudaFree(device_pixels));
   CHECK_CUDA_ERR(cudaFree(device_colors));
