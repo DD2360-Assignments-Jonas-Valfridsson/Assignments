@@ -7,36 +7,8 @@
 using namespace std;
 typedef long long ll;
 
-int main() {
-  ll current_time = time(nullptr);
-  ofstream image (to_string(current_time).append(".bmp"), ofstream::binary);
-  image << 
-    (uint8_t)0x42 << 
-    (uint8_t)0x4D << 
-    (uint8_t)0x7C << 
-    (uint8_t)0x00 << 
-    (uint8_t)0x00 << 
-    (uint8_t)0x00 << 
-    (uint8_t)0x00 << 
-    (uint8_t)0x00 << 
-    (uint8_t)0x00 << 
-    (uint8_t)0x00 << 
-    (uint8_t)0x1A << 
-    (uint8_t)0x00 << 
-    (uint8_t)0x00 << 
-    (uint8_t)0x00 << 
-    (uint8_t)0x0C << 
-    (uint8_t)0x00 << 
-    (uint8_t)0x00 << 
-    (uint8_t)0x00 << 
-    (uint8_t)0x00 << // Image Width
-    (uint8_t)0x4E << // Image Width
-    (uint8_t)0xA2 << // Image Height
-    (uint8_t)0x45 << // Image height
-    (uint8_t)0x01 << 
-    (uint8_t)0x00 << 
-    (uint8_t)0x18 << 
-    (uint8_t)0x00;
+int main(int argc, char **argv) {
+  int write_to_file_flag = std::atoi(argv[1]);
 
   char start1 = 200, start2 = 200, start3 = 200;
   int max_iter = 150, shade = 1, speed1 = 0, speed2 = 10, speed3 = 0, j = 1;
@@ -97,10 +69,43 @@ int main() {
     << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() 
     << std::endl;
 
-  for (int i = 0; i < xpixels * ypixels * 3; i++)
-    image << memory[i];
 
-  image << 0x00 << 0x00;	
+  if (write_to_file_flag) {
+    long long current_time = time(nullptr);
+    std::ofstream image (std::to_string(current_time).append("-gpu.bmp"), std::ofstream::binary);
+    image << 
+      (uint8_t)0x42 << 
+      (uint8_t)0x4D << 
+      (uint8_t)0x7C << 
+      (uint8_t)0x00 << 
+      (uint8_t)0x00 << 
+      (uint8_t)0x00 << 
+      (uint8_t)0x00 << 
+      (uint8_t)0x00 << 
+      (uint8_t)0x00 << 
+      (uint8_t)0x00 << 
+      (uint8_t)0x1A << 
+      (uint8_t)0x00 << 
+      (uint8_t)0x00 << 
+      (uint8_t)0x00 << 
+      (uint8_t)0x0C << 
+      (uint8_t)0x00 << 
+      (uint8_t)0x00 << 
+      (uint8_t)0x00 << 
+      (uint8_t)0x00 << // Image Width
+      (uint8_t)0x4E << // Image Width
+      (uint8_t)0xA2 << // Image Height
+      (uint8_t)0x45 << // Image height
+      (uint8_t)0x01 << 
+      (uint8_t)0x00 << 
+      (uint8_t)0x18 << 
+      (uint8_t)0x00;
+
+    for (int i = 0; i < xpixels * ypixels * 3; i++) 
+      image << memory[i];
+
+    image << 0x00 << 0x00;	
+  }
 
   free(memory);
   return 0;
