@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1607702784 "main.tex" "main.pdf" "main" 1607702805
+["pdflatex"] 1607702990 "main.tex" "main.pdf" "main" 1607703058
   "/etc/texmf/web2c/texmf.cnf" 1571400076 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
@@ -179,10 +179,10 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1579082956 813977 63168588a4c5b8b9aeb335ab0e4642a2 ""
   "cpu_vs_gpu.png" 1607693557 15218 d21d076853bc03838a10d08495729486 ""
   "external-images/mandelbrot.jpeg" 1607681839 8045 f383409735b466f5ea1e9c0acca58dac ""
-  "main.aux" 1607702787 4172 a96450b06f55a40b635e10bfaba267dc ""
-  "main.out" 1607702787 775 f08d2d870ac9cbcced4c4cc39478bd3f ""
-  "main.tex" 1607702805 10459 9602798655000014f72fbe34b9e2f53d ""
-  "main.toc" 1607702787 1003 56b6ae2668b901434025dc7c58569019 ""
+  "main.aux" 1607702993 4172 a96450b06f55a40b635e10bfaba267dc ""
+  "main.out" 1607702993 775 f08d2d870ac9cbcced4c4cc39478bd3f ""
+  "main.tex" 1607703058 10687 7b5bd0b9e6cf0ccd64899d3cb3788820 ""
+  "main.toc" 1607702993 1003 56b6ae2668b901434025dc7c58569019 ""
   "mandelbrot_zoom_1.png" 1607696746 1125515 8d31d58b0c60c14eae52d814ecd5f95c ""
   "mandelbrot_zoom_2.png" 1607696746 1210863 d5576d4903b9052d09fd3c5350a3b7f9 ""
   "mandelbrot_zoom_3.png" 1607696746 1306424 f8d07b1d868e8db707a3b3c882284fe3 ""
@@ -190,8 +190,8 @@
   "read.png" 1607689416 13232 25d43163ec530c13336af99a73c80f5b ""
   "run.png" 1607697348 13716 498734a247cdb9527fa0d4251a9582a9 ""
   (generated)
-  "main.out"
-  "main.pdf"
-  "main.aux"
   "main.log"
+  "main.aux"
+  "main.pdf"
+  "main.out"
   "main.toc"
