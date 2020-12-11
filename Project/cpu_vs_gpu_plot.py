@@ -33,11 +33,11 @@ for _ in np.arange(3):
 
     register.append(
         get_gpu_time(
-            subprocess.check_output(f"./cuda_mandel_minimize_op 0",
+            subprocess.check_output(f"./cuda_mandel_register 0",
                                     shell=True).decode().splitlines()))
     all.append(
         get_gpu_time(
-            subprocess.check_output(f"./cuda_mandel_all_optimization 0",
+            subprocess.check_output(f"./cuda_mandel_all 0",
                                     shell=True).decode().splitlines()))
 
     cpu.append(

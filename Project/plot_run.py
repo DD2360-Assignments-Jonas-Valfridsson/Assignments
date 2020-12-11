@@ -4,30 +4,43 @@ import seaborn as sb
 import numpy as np
 import pandas as pd
 
-original, mini_op, with_floats, mini_op_floats = [], [], [], []
+
+def get_gpu_time(output):
+    return int(output[0].split()[1])
+
+
+ori, pinned, register, precision, all = [], [], [], [], []
 for _ in np.arange(3):
 
-    original_output = subprocess.check_output(
-        f"./cuda_mandel 0", shell=True).decode().splitlines()
-    floats_output = subprocess.check_output(f"./cuda_mandel_floats 0",
-                                            shell=True).decode().splitlines()
-    mini_op_output = subprocess.check_output(f"./cuda_mandel_minimize_op 0",
-                                             shell=True).decode().splitlines()
-    mini_op_floats_output = subprocess.check_output(
-        f"./cuda_mandel_all_optimization 0", shell=True).decode().splitlines()
+    ori.append(
+        get_gpu_time(
+            subprocess.check_output(f"./cuda_mandel 0",
+                                    shell=True).decode().splitlines()))
 
-    print(original_output, floats_output, mini_op_output, mini_op_floats_output)
+    pinned.append(
+        get_gpu_time(
+            subprocess.check_output(f"./cuda_mandel_pinned 0",
+                                    shell=True).decode().splitlines()))
 
-    original.append(int(original_output[0].split()[1]))
-    with_floats.append(int(floats_output[0].split()[1]))
-    mini_op.append(int(mini_op_output[0].split()[1]))
-    mini_op_floats.append(int(mini_op_floats_output[0].split()[1]))
+    precision.append(
+        get_gpu_time(
+            subprocess.check_output(f"./cuda_mandel_floats 0",
+                                    shell=True).decode().splitlines()))
+
+    register.append(
+        get_gpu_time(
+            subprocess.check_output(f"./cuda_mandel_register 0",
+                                    shell=True).decode().splitlines()))
+    all.append(
+        get_gpu_time(
+            subprocess.check_output(f"./cuda_mandel_all 0",
+                                    shell=True).decode().splitlines()))
 
 data = pd.DataFrame({
-    "optimization": ["None"] * len(original) + ["registers"] * len(mini_op) + ["floats"] * len(with_floats) +
-     ["both"] * len(mini_op_floats),
+    "optimization": ["gpu"] * len(ori) + ["gpu-reg"] * len(register) +
+    ["gpu-f32"] * len(precision) + ["gpu-all"] * len(all),
     "time in ms":
-    original + mini_op + with_floats + mini_op_floats
+    ori + register + precision + all
 })
 
 plt.figure(figsize=(10, 6))
