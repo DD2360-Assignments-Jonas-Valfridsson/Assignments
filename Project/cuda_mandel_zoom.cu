@@ -96,7 +96,7 @@ int main(int argc, char **argv) {
   int write_to_file_flag = std::atoi(argv[1]);
 
     
-  int x_pixels = 19968, y_pixels = 13730, max_iter = 1000;
+  int x_pixels = 19968, y_pixels = 17826, max_iter = 1000;
   int n_pixels = x_pixels * y_pixels;
 
   char *host_pixels, *device_pixels, *host_colors, *device_colors;
@@ -145,37 +145,63 @@ int main(int argc, char **argv) {
     long long current_time = time(nullptr);
     std::ofstream image (std::to_string(current_time).append("-gpu.bmp"), std::ofstream::binary);
     image << 
-      (uint8_t)0x42 << 
-      (uint8_t)0x4D << 
-      (uint8_t)0x7C << 
-      (uint8_t)0x00 << 
-      (uint8_t)0x00 << 
-      (uint8_t)0x00 << 
-      (uint8_t)0x00 << 
-      (uint8_t)0x00 << 
-      (uint8_t)0x00 << 
-      (uint8_t)0x00 << 
-      (uint8_t)0x1A << 
-      (uint8_t)0x00 << 
-      (uint8_t)0x00 << 
-      (uint8_t)0x00 << 
-      (uint8_t)0x0C << 
-      (uint8_t)0x00 << 
-      (uint8_t)0x00 << 
-      (uint8_t)0x00 << 
+      (uint8_t)0x42 << // Filetype
+      (uint8_t)0x4D << // Filetype
+      (uint8_t)0x36 << // File size
+      (uint8_t)0x14 << // File size
+      (uint8_t)0xA6 << // File size
+      (uint8_t)0x3F << // File size
+      (uint8_t)0x00 << // Reserved 
+      (uint8_t)0x00 << // Reserved 
+      (uint8_t)0x00 << // Reserved 
+      (uint8_t)0x00 << // Reserved 
+      (uint8_t)0x36 << // Offset of pixel data
+      (uint8_t)0x00 << // Pixel Offset
+      (uint8_t)0x00 << // Pixel Offset
+      (uint8_t)0x00 << // Pixel Offset
+      (uint8_t)0x28 << // Header size
+      (uint8_t)0x00 << // Header Size
+      (uint8_t)0x00 << // Header Size
+      (uint8_t)0x00 << // Header Size
       (uint8_t)0x00 << // Image Width
       (uint8_t)0x4E << // Image Width
+      (uint8_t)0x00 << // Image Width
+      (uint8_t)0x00 << // Image Width
       (uint8_t)0xA2 << // Image Height
       (uint8_t)0x45 << // Image height
-      (uint8_t)0x01 << 
-      (uint8_t)0x00 << 
-      (uint8_t)0x18 << 
-      (uint8_t)0x00;
+      (uint8_t)0x00 << // Image Height
+      (uint8_t)0x00 << // Image Height
+      (uint8_t)0x01 <<  // Planes
+      (uint8_t)0x00 <<  // Planes
+      (uint8_t)0x18 <<  // Bits per Pixels
+      (uint8_t)0x00 <<  // Bits per Pixels
+      (uint8_t)0x00 <<  // Compression
+      (uint8_t)0x00 <<  // Compression
+      (uint8_t)0x00 <<  // Compression
+      (uint8_t)0x00 <<  // Compression
+      (uint8_t)0x00 <<  // Image Size
+      (uint8_t)0x00 <<  // Image Size
+      (uint8_t)0x00 <<  // Image Size
+      (uint8_t)0x00 <<  // Image Size
+      (uint8_t)0x00 <<  // Xpixels meter
+      (uint8_t)0x00 <<  // Xpixels meter
+      (uint8_t)0x00 <<  // Xpixels meter
+      (uint8_t)0x00 <<  // Xpixels meter
+      (uint8_t)0x00 <<  // Ypixels meter
+      (uint8_t)0x00 <<  // Ypixels meter
+      (uint8_t)0x00 <<  // Ypixels meter
+      (uint8_t)0x00 <<  // Ypixels meter
+      (uint8_t)0x00 <<  // Total Colors
+      (uint8_t)0x00 <<  // Total Colors
+      (uint8_t)0x00 <<  // Total Colors
+      (uint8_t)0x00 <<  // Total Colors
+      (uint8_t)0x00 <<  // Important Colors
+      (uint8_t)0x00 <<  // Important Colors
+      (uint8_t)0x00 <<  // Important Colors
+      (uint8_t)0x00;    // Important Colors
 
     for (int i = 0; i < n_pixels * 3; i++) 
       image << host_pixels[i];
-
-    image << 0x00 << 0x00;	
   }
 
   CHECK_CUDA_ERR(cudaFreeHost(host_pixels));
