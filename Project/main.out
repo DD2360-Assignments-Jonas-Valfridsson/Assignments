@@ -1,0 +1,13 @@
+\BOOKMARK [1][-]{section.1}{Project Meta}{}% 1
+\BOOKMARK [1][-]{section.2}{Introduction}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Problem Description}{section.2}% 3
+\BOOKMARK [1][-]{section.3}{Method}{}% 4
+\BOOKMARK [2][-]{subsection.3.1}{Hardware}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.2}{Reproducing Experiments}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.3}{Optimization Techniques}{section.3}% 7
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Pinned Memory}{subsection.3.3}% 8
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Using 32-bit precision}{subsection.3.3}% 9
+\BOOKMARK [3][-]{subsubsection.3.3.3}{Maximizing register usage}{subsection.3.3}% 10
+\BOOKMARK [1][-]{section.4}{Results}{}% 11
+\BOOKMARK [1][-]{section.5}{Discussion}{}% 12
+\BOOKMARK [1][-]{section.6}{Appendix}{}% 13
