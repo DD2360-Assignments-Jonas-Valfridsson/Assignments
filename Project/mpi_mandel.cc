@@ -3,7 +3,8 @@
 #include <stdlib.h>
 /*#include <mpich/mpi.h>*/
 #include <stdio.h>
-#include <mpi.h>
+#include <mpi/mpi.h>
+#include <chrono>
 
 void calculate_pixels(int rank, 
     int xpixels, 
@@ -18,22 +19,27 @@ void calculate_pixels(int rank,
   
   MPI_Recv(ranges, 2, MPI_INT, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 
-  if (status.MPI_ERROR)
-    printf("Error %d in process %d", status.MPI_ERROR, rank);
+  /*if (status.MPI_ERROR)*/
+    /*printf("Error %d in process %d", status.MPI_ERROR, rank);*/
 
   int xstart= ranges[0], xend = ranges[1];
   int x_interval = xend - xstart;
 
   /*3 values for each pixel since we have colors*/
   int entries = x_interval * 3 * ypixels, index = 0, rel_x = 0;
-  char pixels[entries];
 
-  printf("Process %d calculates %d -> %d which is %d entries\n", rank, xstart, xend, entries);
+
+  char* pixels = (char*)calloc(entries, sizeof(char));
+  /*printf("Process %d calculates %d -> %d which is %d entries\n", rank, xstart, xend, entries);*/
+
 
   for (int y = 0; y < ypixels; y++) {
     for(int x = xstart; x < xend; x++) {
-			double c_re = ((double)x - xpixels/0.10)*0.15/xpixels;
-			double c_im = ((double)y - ypixels/2.0)*0.15/xpixels;
+		//	double c_re = ((double)x - xpixels/0.10)*0.15/xpixels;
+		//	double c_im = ((double)y - ypixels/2.0)*0.15/xpixels;
+			double c_re = ((double)x - xpixels/2.0)*4.0/xpixels;
+			double c_im = ((double)y - ypixels/2.0)*4.0/xpixels;
+
 			double i = 0, j = 0;
 			int iteration = 0;
 			while ( i*i + j*j < 4 && iteration < max_iter) {
@@ -58,17 +64,20 @@ void calculate_pixels(int rank,
     }	
   }
   
-  printf("Final index %d rel x %d xstart %d", index, rel_x, xstart);
-  printf("%d Sending %d\n", rank, entries);
+  /*printf("Final index %d rel x %d xstart %d", index, rel_x, xstart);*/
+  /*printf("%d Sending %d\n", rank, entries);*/
   MPI_Send(pixels, entries, MPI_CHAR, 0, 0, MPI_COMM_WORLD);
+  free(pixels);
 }
 
 void collect_and_write_img(int workers, int xpixels, int ypixels) {
   MPI_Status status;
   /*3 to include color*/
   int entries = xpixels * ypixels * 3, received = 0;
-  printf("Waiting to receive, has buffer of size %d\n", entries);
+  /*printf("Waiting to receive, has buffer of size %d\n", entries);*/
   char *image = (char *) calloc(entries, sizeof(char));
+  /*printf("Allocated buffer of size %d\n", entries);*/
+  auto start = std::chrono::steady_clock::now();
   for (int i = 0; i < workers; i++) {
     MPI_Recv(image + received, 
              entries - received, 
@@ -79,41 +88,47 @@ void collect_and_write_img(int workers, int xpixels, int ypixels) {
              &status);
 
     received = received + status._ucount;
-    printf("Got %d from %d\n", status._ucount, status.MPI_SOURCE);
+    /*printf("Got %zu from %d\n", status._ucount, status.MPI_SOURCE);*/
   }
+
+  auto end = std::chrono::steady_clock::now();
+  std::cout << "TIME " 
+    << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() 
+    << std::endl;
 
 
   FILE *fp;
 
   fp = fopen("./mandelbrot.bmp", "wb");
 
+  // # E100
   // Write the BMP file header
-  fputc(0x42, fp);
-  fputc(0x4D, fp);
-  fputc(0x7C, fp);
-  fputc(0x00, fp);
-  fputc(0x00, fp);
-  fputc(0x00, fp);
-  fputc(0x00, fp);
-  fputc(0x00, fp);
-  fputc(0x00, fp);
-  fputc(0x00, fp);
-  fputc(0x1A, fp);
-  fputc(0x00, fp);
-  fputc(0x00, fp);
-  fputc(0x00, fp);
-  fputc(0x0C, fp);
-  fputc(0x00, fp);
-  fputc(0x00, fp);
-  fputc(0x00, fp);
-  fputc(0x00, fp);
-  fputc(0x0A, fp);
-  fputc(0xA0, fp);
-  fputc(0x05, fp);
-  fputc(0x01, fp);
-  fputc(0x00, fp);
-  fputc(0x18, fp);
-  fputc(0x00, fp);
+  fputc(0x42, fp); //"B"  - header info
+  fputc(0x4D, fp); //"M"  - header info
+  fputc(0x7C, fp); // filesize
+  fputc(0x00, fp); // filesize
+  fputc(0x00, fp); // filesize
+  fputc(0x00, fp); // filesize
+  fputc(0x00, fp); // reserved
+  fputc(0x00, fp); // reserved
+  fputc(0x00, fp); // reserved
+  fputc(0x00, fp); // reserved
+  fputc(0x1A, fp); // Pixel offset, where the data begins
+  fputc(0x00, fp); // Pixel offset
+  fputc(0x00, fp); // pixel offset
+  fputc(0x00, fp); // pixel offset   -- at this point we have written 14 bytes, which is the header
+  fputc(0x0C, fp); // Header Size -- Here Image information data starts
+  fputc(0x00, fp); // Header Size
+  fputc(0x00, fp); // Header Size
+  fputc(0x00, fp); // Header Size
+  fputc(0x00, fp); // Image Width
+  fputc(0x4E, fp); // Image Width
+  fputc(0xA2, fp); // Image Height
+  fputc(0x45, fp); // Image Height
+  fputc(0x01, fp); // Dunno
+  fputc(0x00, fp); // Dunno
+  fputc(0x18, fp); // Dunno
+  fputc(0x00, fp); // Dunno
 
   // The image array is structured as follows: The size of a columns has C = (3 * ypixel) entries
   // The first columns is image[0: C] the second is image[C: 2C]
@@ -133,14 +148,14 @@ void collect_and_write_img(int workers, int xpixels, int ypixels) {
   fputc(0x00, fp);
   int code = fclose(fp);
 
-  if (code == EOF)
-    printf("Error occurred at creating image file");
-  else
-    printf("Image created successfully");
+  /*if (code == EOF)*/
+    /*printf("Error occurred at creating image file");*/
+  /*else*/
+    /*printf("Image created successfully");*/
 }
 
 int main(int argc, char **argv) {
-  int rank, size, tag, rc, xpixels = 2560, ypixels=1440;
+  int rank, size, tag, rc, xpixels = 19968, ypixels = 13730;
   MPI_Status status;
 
 
@@ -173,6 +188,7 @@ int main(int argc, char **argv) {
   rc = MPI_Comm_size(MPI_COMM_WORLD, &size);
   rc = MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
+  /*printf("%d %d\n", size, rank);*/
   if (size > 3) {
   // Let master process calculate the size of the
   // columns that the children should calculate

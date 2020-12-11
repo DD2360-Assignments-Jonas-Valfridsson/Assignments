@@ -1,0 +1,88 @@
+#pragma GCC optimize("O3")
+#include <time.h>
+#include <string>
+#include <fstream>
+#include <iostream>
+using namespace std;
+typedef long long ll;
+
+int main() {
+	ll current_time = time(nullptr);
+	ofstream image (to_string(current_time).append(".bmp"), ofstream::binary);
+	image << 
+    (uint8_t)0x42 << 
+    (uint8_t)0x4D << 
+    (uint8_t)0x7C << 
+    (uint8_t)0x00 << 
+    (uint8_t)0x00 << 
+    (uint8_t)0x00 << 
+    (uint8_t)0x00 << 
+    (uint8_t)0x00 << 
+    (uint8_t)0x00 << 
+    (uint8_t)0x00 << 
+    (uint8_t)0x1A << 
+    (uint8_t)0x00 << 
+    (uint8_t)0x00 << 
+    (uint8_t)0x00 << 
+    (uint8_t)0x0C << 
+    (uint8_t)0x00 << 
+    (uint8_t)0x00 << 
+    (uint8_t)0x00 << 
+    (uint8_t)0x00 << // Image Width
+    (uint8_t)0x4E << // Image Width
+    (uint8_t)0xA2 << // Image Height
+    (uint8_t)0x45 << // Image height
+    (uint8_t)0x01 << 
+    (uint8_t)0x00 << 
+    (uint8_t)0x18 << 
+    (uint8_t)0x00;
+	
+  char start1 = 200, start2 = 200, start3 = 200;
+  int max_iter = 150, shade = 1, speed1 = 0, speed2 = 10, speed3 = 0, j = 1;
+  char colors[max_iter * 3];
+  for (int i = 0; i < max_iter; i+=3) {
+   if (j % 50 == 0)
+     shade <<= 1;
+
+   int red = start1 + i * speed1 - j;
+   int green = start2 + i * speed2;
+   int blue = start3 + i * speed3 - j;
+
+   if (red < 0) red = 0;
+   if (green < 0) green = 0;
+   if (blue < 0) blue = 0;
+
+
+   colors[i] =     (red) % (256 / shade);
+   colors[i + 1] = (green) % (256 / shade);
+   colors[i + 2] = (blue) % (256 / shade);
+
+   j += 1;
+  }
+
+
+  int xpixels = 19968, ypixels = 13730;
+
+	for (double y = 0; y < ypixels; y++) {
+		for(double x = 0; x < xpixels; x++) {
+			double c_re = (x - xpixels/2.0)*4.0/xpixels;
+			double c_im = (y - ypixels/2.0)*4.0/xpixels;
+			double i = 0, j = 0;
+			int iteration = 0;
+			while ( i*i + j*j < 4 && iteration < max_iter) {
+				double i_new = i*i - j*j + c_re;
+				j = 2*i*j + c_im;
+				i = i_new;
+				iteration++;
+			}	
+			if (iteration < max_iter) {
+				image << colors[3*iteration] << colors[3*iteration+1]  << colors[3*iteration+2];
+			} else {
+				image << start1 << start2 << start3;
+			}
+		}	
+	}
+
+	image << 0x00 << 0x00;	
+	return 0;
+}
